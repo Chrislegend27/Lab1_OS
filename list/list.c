@@ -56,6 +56,19 @@ char * listToString(list_t *l) {
   return buf;
 }
 
+void list_add_to_front(list_t *l, elem value) {
+    // Allocate memory for the new node and set its value
+    node_t *new_node = malloc(sizeof(node_t));
+    if (new_node == NULL) {
+        // Handle memory allocation failure
+        return;
+    }
+    new_node->value = value;
+    new_node->next = l->head;  // The new node points to the current head
+    l->head = new_node;        // Update the head to be the new node
+}
+
+
 int list_length(list_t *l) { 
   int length = 0;
   node_t *current = l->head;
